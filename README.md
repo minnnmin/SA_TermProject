@@ -1,2 +1,2 @@
 # SA_TermProject
-Software Architecture 기말 Term Project
+Software Architecture Final Term Project
