@@ -1,25 +1,8 @@
+import java.time.LocalDateTime;
 
-import java.util.*;
-
-/**
- * 
- */
 public class Checkin {
 
-    /**
-     * Default constructor
-     */
-    public Checkin() {
-    }
-
-    /**
-     * 
-     */
-    private String visitor;
-
-    /**
-     * 
-     */
-    private datetime visitedtime;
+    private Visitor visitor;
+    private LocalDateTime visitedtime;
 
 }

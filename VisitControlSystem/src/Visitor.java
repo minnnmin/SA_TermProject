@@ -1,35 +1,18 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public class Visitor {
 
-    /**
-     * Default constructor
-     */
-    public Visitor() {
+    public Visitor(Long id, String name, int age, String address, String contact, Vaccination vaccination) {
+        this.vid = id;
+        this.vname = name;
+        this.vage = age;
+        this.vaddress = address;
+        this.vcontact = contact;
+        this.vaccination = vaccination;
     }
 
-    /**
-     * 
-     */
-    private void vid;
-
-    /**
-     * 
-     */
-    private void vname;
-
-    /**
-     * 
-     */
-    private void vaddress;
-
-    /**
-     * 
-     */
-    private void vcontact;
-
+    private Long vid;
+    private String vname;
+    private int vage;
+    private String vaddress;
+    private String vcontact;
+    private Vaccination vaccination;
 }
