@@ -1,35 +1,16 @@
-
-import java.util.*;
-
-/**
- * 
- */
 public class Facility {
 
-    /**
-     * Default constructor
-     */
-    public Facility() {
+
+    public Facility(Long id, String name, String address, String contact) {
+        this.fid = id;
+        this.fname = name;
+        this.faddress = address;
+        this.fcontact = contact;
+
     }
 
-    /**
-     * 
-     */
-    private void fid;
-
-    /**
-     * 
-     */
-    private void fname;
-
-    /**
-     * 
-     */
-    private void faddress;
-
-    /**
-     * 
-     */
-    private void fcontact;
-
+    private Long fid;
+    private String fname;
+    private String faddress;
+    private String fcontact;
 }
