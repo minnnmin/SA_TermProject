@@ -48,14 +48,14 @@ public class EncryptModule {
         this.cryptoStrategy = SymmetricKeyFactory.createCryptoStrategy(encryptType);
     }
 
-    // (암호화 하는 사람이 사용) connectPair 기반으로 새로운 keyPair 생성, caServer에 keyPair 값 업데이트
+    // (암호화 하는 사람이 사용) userKey 기반으로 새로운 symmetricKey 생성, caServer에 symmetricKey 값 업데이트
     public String generateKey(String userInfo) {
         symmetricKey = SymmetricKeyFactory.createKey(encryptType, userInfo);
         caConnector.updateKeyPair(userInfo, symmetricKey);
         return symmetricKey;
     }
 
-    // (암호화 하는 사람이 사용) connectPair 기반으로 새로운 keyPair 생성, caServer에 keyPair 값 업데이트
+    // (암호화 하는 사람이 사용) userKey 기반으로 새로운 symmetricKey 생성, caServer에 symmetricKey 값 업데이트
     public void initKey(String symmetricKey) {
         cryptoStrategy.init(symmetricKey);
     }

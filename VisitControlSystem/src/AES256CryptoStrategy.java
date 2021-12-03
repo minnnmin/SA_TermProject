@@ -10,7 +10,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
 
-/*** RSA 알고리즘 암/복호화 Strategy Pattern ***/
+/*** AES256 알고리즘 암/복호화 Strategy Pattern ***/
 public class AES256CryptoStrategy implements SymmetricKeyCryptoStrategy {
 
     private String key;
