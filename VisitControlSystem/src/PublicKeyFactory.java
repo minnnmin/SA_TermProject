@@ -2,7 +2,7 @@ import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
-/*** 다양한 종류의 공개키를 만들어주는 Factory ***/
+/*** 공개키를 만들어주는 Factory Pattern ***/
 public class PublicKeyFactory {
     // RSA Key pair size
     private static final int RSA_KEY_PAIR_SIZE = 512;
@@ -23,6 +23,16 @@ public class PublicKeyFactory {
             }
         } else {
             // invalid type
+            return null;
+        }
+    }
+
+    public static PublicKeyCryptoStrategy createCryptoStrategy(String type){
+        if(type.equals("RSA")) {
+            // RSA Type
+            return new RSACryptoStrategy();
+        } else {
+            // invalid Type
             return null;
         }
     }

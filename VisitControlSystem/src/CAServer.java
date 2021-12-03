@@ -1,56 +1,46 @@
 import java.security.*;
 import java.util.HashMap;
 
-// Todo : Connector 가 둘의 키를 교환해줌.
-// Todo : 클라이언트와 서버가 비대칭키 각각 만들어서 서로 양방향 통신 준비
-// Todo : 클라와 서버 대칭키 주고 받음
-// Todo : 앞으로 오로고가는 데이터들 모두 대칭키로 주고받음
+/*** CA 사용 시나리오 ***
+ * Client 가 CAServer에게 KeyPair를 받는다.
+ * keyPair 로 PublicKeyCryptoStrategy init() 후 보내고자하는 정보를 encrypt 한다.
+ * encrypt 된 정보와 pubicKey를 함께 보내준다.
+ * 받는쪽에선 publicKey 로 PublicKeyCryptoStrategy init() 후 전송받은 encrypt 된 정보를 복호화한다.
+ * ***/
 
 /*** 인증서를 발급하는 CAServer ***/
 public class CAServer {
 
-    // Key : <Client, Server>
+    // Key : <Sender, Receiver>
     // Value : <Private key, Public key>
-    private HashMap<Pair<String, String>, Pair<PrivateKey, PublicKey>> keyStore;
+    private HashMap<Pair<Object, Object>, Pair<PrivateKey, PublicKey>> keyStore;
+    private String KEY_PAIR_TYPE = "RSA";
+    public String test = "test";
 
     CAServer(){
-        keyStore = new HashMap();
-    }
-
-    // get keyPair(PrivateKey and PublicKey) if connect(Pair of Client and Server) is exists.
-    // generate new keyPair if connect is not exists.
-    public Pair<PrivateKey, PublicKey> getKeyPair(Pair<String, String> connectPair) {
-        if(isConnectPairExists(connectPair)){
-            return keyStore.get(connectPair);
-        } else {
-            Pair<PrivateKey, PublicKey> keyPair = generateKeyPair(); // generate new key pair
-            updateKeyPair(connectPair, keyPair); // update to keyStore
-            return keyPair;
-        }
-    }
-
-    // update to keyStore
-    // key: connectPair (with Client and Server)
-    // key: keyPair (with PrivateKey and PublicKey)
-    private void updateKeyPair(Pair<String, String> connectPair, Pair<PrivateKey, PublicKey> keyPair) {
-        keyStore.put(connectPair, keyPair);
+        this.keyStore = new HashMap();
     }
 
     // check connectPair is exists in keyStore
-    private boolean isConnectPairExists(Pair<String, String> connectPair) {
+    private boolean isConnectPairExists(Pair<Object, Object> connectPair) {
         return keyStore.containsKey(connectPair);
     }
 
-    // generate
-    private Pair<PrivateKey, PublicKey> generateKeyPair() {
-        return PublicKeyFactory.createKeyPair("RSA");
+    // update to keyStore
+    // key: connectPair (with Sender and Receiver)
+    // key: keyPair (with PrivateKey and PublicKey)
+    // "synchronized" option for depending race condition
+    public synchronized void updateKeyPair(Pair<Object, Object> connectPair, Pair<PrivateKey, PublicKey> keyPair) {
+        keyStore.put(connectPair, keyPair);
+    }
+
+    // get keyPair(PrivateKey and PublicKey) if connect(Pair of Sender and Receiver) is exists.
+    // generate new keyPair if connect is not exists.
+    public Pair<PrivateKey, PublicKey> getKeyPair(Pair<Object, Object> connectPair) {
+        if(isConnectPairExists(connectPair)){
+            return keyStore.get(connectPair);
+        } else  {
+            return null;
+        }
     }
 }
-
-/***
- * CA 가 인증서 발급, 개인키를 이용하여.
- * 나머진 공개키를 가지고 있음. 그리고 이를 이용해서 복호화 함
- * > 복호화 성공시 CA 에서 발급한게 맞음
- * 그리고 인증서는 서버가 클라에게 제공
- * 인증서에는 서버의 공개키가 포하되어있음
- ***/

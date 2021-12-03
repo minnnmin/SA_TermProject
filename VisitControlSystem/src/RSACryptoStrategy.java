@@ -11,10 +11,11 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
 
+/*** RSA 알고리즘 암/복호화 Strategy Pattern ***/
 public class RSACryptoStrategy implements PublicKeyCryptoStrategy {
 
-    RSAPrivateKey privateKey;
-    RSAPublicKey publicKey;
+    private RSAPrivateKey privateKey;
+    private RSAPublicKey publicKey;
 
     RSACryptoStrategy() {
         this.privateKey = null;
@@ -25,6 +26,11 @@ public class RSACryptoStrategy implements PublicKeyCryptoStrategy {
     public void init(Pair<PrivateKey, PublicKey> keyPair) {
         this.privateKey = (RSAPrivateKey) keyPair.first;
         this.publicKey = (RSAPublicKey) keyPair.second;
+    }
+
+    @Override
+    public void init(PrivateKey privateKey) {
+        this.privateKey = (RSAPrivateKey) privateKey;
     }
 
     @Override
