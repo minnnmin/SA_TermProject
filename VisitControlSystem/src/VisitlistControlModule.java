@@ -1,10 +1,16 @@
+import java.time.LocalDateTime;
+
 public class VisitlistControlModule {
 
+    ServerConnector serverConnector = new ServerConnector();
+
     public void createVisitlist(Facility facility) {
-        // TODO implement here
+        serverConnector.createVisitlist(facility);
     }
 
     public void addVisitorInfo(Facility facility, String visitor) {
-        // TODO implement here
+        // String visitor --> Checkin
+        Checkin checkin = new Checkin(LocalDateTime.now(), visitor);
+        serverConnector.addVisitorInfo(facility, checkin);
     }
 }

@@ -2,7 +2,7 @@ public class EncryptModule {
 
     private String encryptionKey;
 
-    public encrptionKey getKey() {
+    public EncrptionKey getKey() {
         // TODO implement here
         return null;
     }

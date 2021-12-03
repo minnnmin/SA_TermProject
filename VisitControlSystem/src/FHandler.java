@@ -1,11 +1,12 @@
 public class FHandler {
 
     public void createVisitlist(Facility facility) {
-        // TODO implement here
+        VisitlistControlModule visitlistControlModule = new VisitlistControlModule();
+        visitlistControlModule.createVisitlist(facility);
     }
 
     public void showMessage(String message) {
-        // TODO implement here
+
     }
 
 }

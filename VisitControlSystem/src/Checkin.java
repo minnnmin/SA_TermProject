@@ -1,8 +1,12 @@
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@AllArgsConstructor
 public class Checkin {
 
-    private Visitor visitor;
-    private LocalDateTime visitedtime;
-
+    private LocalDateTime visitedTime;
+    private String visitor;
 }

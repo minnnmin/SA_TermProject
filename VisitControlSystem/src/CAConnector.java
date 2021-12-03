@@ -1,6 +1,6 @@
 public class CAConnector {
 
-    public encrptionKey getKey() {
+    public EncrptionKey getKey() {
         // TODO implement here
         return null;
     }

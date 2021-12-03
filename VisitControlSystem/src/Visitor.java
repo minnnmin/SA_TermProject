@@ -1,7 +1,10 @@
+import lombok.Getter;
+
+@Getter
 public class Visitor {
 
-    public Visitor(Long id, String name, int age, String address, String contact, Vaccination vaccination) {
-        this.vid = id;
+    public Visitor(String name, int age, String address, String contact, Vaccination vaccination) {
+        this.vid = tmpVid++;
         this.vname = name;
         this.vage = age;
         this.vaddress = address;
@@ -9,7 +12,8 @@ public class Visitor {
         this.vaccination = vaccination;
     }
 
-    private Long vid;
+    private static Integer tmpVid = 1;
+    private Integer vid;
     private String vname;
     private int vage;
     private String vaddress;
