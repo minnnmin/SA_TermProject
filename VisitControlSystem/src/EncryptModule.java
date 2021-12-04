@@ -2,59 +2,62 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 
 /*** sample code ***
- public static void main(String[] args) {
-     // sender example
-     String message = "this is a very important message";
+ public static void main(String args[]) {
+     // init
+     String message = "super secret my long long messages";
+     String enc_userName = "xemic";
      CAServer caServer = new CAServer();
      EncryptModule encryptModule = new EncryptModule(caServer);
-     encryptModule.initKey(new Pair("sender0231", "receiver1532"));
-     System.out.println("before encryption: "+message);
-     String secretMessage = encryptModule.encryptInfo(message);
-     System.out.println("after encryption: "+secretMessage);
-     PrivateKey privateKey = encryptModule.getKey().first;
 
-     // receiver example
+     // encrypt
+     String symmetricKey = encryptModule.generateKey(enc_userName);
+     System.out.println("before encrypt : "+symmetricKey);
+     encryptModule.initKey(symmetricKey);
+     System.out.println("before encrypt : "+message);
+     String encMessage = encryptModule.encryptInfo(message);
+     System.out.println("after encrypt : "+encMessage);
+
+     // decrypt
      EncryptModule decryptModule = new EncryptModule(caServer);
-     decryptModule.initKey(privateKey);
-     System.out.println("before decryption: "+secretMessage);
-     String decryptMessage = decryptModule.decryptInfo(secretMessage);
-     System.out.println("after decryption: "+decryptMessage);
+     decryptModule.initKey(symmetricKey);
+     System.out.println("before decrypt : "+encMessage);
+     String decMessage = decryptModule.decryptInfo(encMessage);
+     System.out.println("after decrypt : "+decMessage);
  }
 *** */
 
 /*** 암호화/복호화 담당하는 모듈 ***/
 public class EncryptModule {
 
-    private Pair<PrivateKey, PublicKey> keyPair; // <개인키, 공개키>
-    private String encryptType; // 공개키 알고리즘 방식
-    private PublicKeyCryptoStrategy cryptoStrategy;
+    private String symmetricKey; // 대칭키
+    private String encryptType; // 대칭키 알고리즘 방식
+    private SymmetricKeyCryptoStrategy cryptoStrategy;
     private CAConnector caConnector;
 
     EncryptModule(CAServer caServer) {
         this.caConnector = new CAConnector();
         this.caConnector.connectServer(caServer);
-        this.encryptType = "RSA"; // default encryptType
-        this.cryptoStrategy = PublicKeyFactory.createCryptoStrategy(encryptType);
+        this.encryptType = "AES256"; // default encryptType
+        this.cryptoStrategy = SymmetricKeyFactory.createCryptoStrategy(encryptType);
     }
 
     EncryptModule(CAServer caServer, String encryptType) {
         this.caConnector = new CAConnector();
         this.caConnector.connectServer(caServer);
         this.encryptType = encryptType;
-        this.cryptoStrategy = PublicKeyFactory.createCryptoStrategy(encryptType);
+        this.cryptoStrategy = SymmetricKeyFactory.createCryptoStrategy(encryptType);
     }
 
-    // (암호화 하는 사람이 사용) connectPair 기반으로 새로운 keyPair 생성, caServer에 keyPair 값 업데이트
-    public void initKey(Pair connectPair) {
-        keyPair = PublicKeyFactory.createKeyPair(encryptType);
-        caConnector.updateKeyPair(connectPair, keyPair);
-        cryptoStrategy.init(keyPair);
+    // (암호화 하는 사람이 사용) userKey 기반으로 새로운 symmetricKey 생성, caServer에 symmetricKey 값 업데이트
+    public String generateKey(String userInfo) {
+        symmetricKey = SymmetricKeyFactory.createKey(encryptType, userInfo);
+        caConnector.updateKeyPair(userInfo, symmetricKey);
+        return symmetricKey;
     }
 
-    // (복호화 하는 사람이 사용) 개인키 기반으로 keyPair 등록
-    public void initKey(PrivateKey key) {
-        keyPair = new Pair(key, null);
-        cryptoStrategy.init(key);
+    // (암호화 하는 사람이 사용) userKey 기반으로 새로운 symmetricKey 생성, caServer에 symmetricKey 값 업데이트
+    public void initKey(String symmetricKey) {
+        cryptoStrategy.init(symmetricKey);
     }
 
     // 문자열 암호화
@@ -67,7 +70,7 @@ public class EncryptModule {
         return cryptoStrategy.decrypt(cipher);
     }
 
-    public Pair<PrivateKey, PublicKey> getKey() {
-        return keyPair;
+    public String getKey() {
+        return symmetricKey;
     }
 }
