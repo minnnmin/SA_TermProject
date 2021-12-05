@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Checkin {
 
-    private LocalDateTime visitedTime;
-    private String visitor;
+    private String visitedTime;
+    private Visitor visitor;
+//    private String visitor;
 }

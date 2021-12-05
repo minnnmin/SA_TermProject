@@ -1,7 +1,12 @@
 public class FHandler {
 
+    private VisitlistControlModule visitlistControlModule;
+
+    FHandler(VisitlistControlModule visitlistControlModule) {
+        this.visitlistControlModule = visitlistControlModule;
+    }
+
     public void createVisitlist(Facility facility) {
-        VisitlistControlModule visitlistControlModule = new VisitlistControlModule();
         visitlistControlModule.createVisitlist(facility);
     }
 

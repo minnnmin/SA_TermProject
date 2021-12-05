@@ -1,22 +1,34 @@
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class ServerConnector {
 
-    ManagementServer managementServer = new ManagementServer();
+    private ManagementServer managementServer;
 
+    public void connectServer(ManagementServer managementServer) {
+        this.managementServer = managementServer;
+    }
+
+    // 명부 생성
     public void createVisitlist(Facility facility) {
         managementServer.createVisitlist(facility);
     }
 
+    // 명부 기록 (갱신)
     public void addVisitorInfo(Facility facility, Checkin checkin) {
-        addVisitorInfo(facility, checkin);
+        managementServer.addVisitorInfo(facility, checkin);
     }
 
-    public void searchFacilityList(String visitor, LocalDateTime starttime, LocalDateTime endtime) {
-        managementServer.searchFacilityList(visitor, starttime, endtime);
+    // Test 용
+    public void printVisitorsOf(Facility facility) {
+        managementServer.printVisitorsOf(facility);
     }
 
-    public void searchVisitorList(Facility facility, LocalDateTime starttime, LocalDateTime endtime) {
-        managementServer.searchVisitorList(facility, starttime, endtime);
+
+    public ArrayList<Facility> searchFacilityList(Visitor visitor, String starttime, String endtime) {
+        return managementServer.searchFacilityList(visitor, starttime, endtime);
+    }
+
+    public ArrayList<Visitor> searchVisitorList(Facility facility, String starttime, String endtime) {
+        return managementServer.searchVisitorList(facility, starttime, endtime);
     }
 }
