@@ -1,12 +1,13 @@
+package Pipe_Filter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Message {
+public class HMessage {
 
-    public Message() {
+    public HMessage() {
     }
     
-    public Message(List <Facility> facilities, List <String> visitors) {
+    public HMessage(List <Facility> facilities, List <String> visitors) {
     	this.facilities = new ArrayList <Facility> (facilities);
     	this.visitors = new ArrayList <String> (visitors);
     }
@@ -16,12 +17,12 @@ public class Message {
     
     // Message 
     // Facility ArrayList
-    // Visitor ArrayList(Encrpted)
+    // Visitor ArrayList(Encrypted)
     //
     
     private List <Facility> facilities;
     private List <String> visitors;
-    public List <Facility> getFaclities() {
+    public List <Facility> getFacilities() {
     	return this.facilities;
     }
     public List <String> getVisitors() {
