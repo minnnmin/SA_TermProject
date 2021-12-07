@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class Checkin {
 
     private String visitedTime;
-    private Visitor visitor;
-//    private String visitor;
+    private int visitorId;
+//    private Visitor visitor;
+    private String visitor;
 }

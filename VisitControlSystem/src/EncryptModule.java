@@ -35,6 +35,7 @@ public class EncryptModule {
     private CAConnector caConnector;
 
     EncryptModule(CAServer caServer) {
+        this.symmetricKey = null;
         this.caConnector = new CAConnector();
         this.caConnector.connectServer(caServer);
         this.encryptType = "AES256"; // default encryptType
@@ -42,6 +43,7 @@ public class EncryptModule {
     }
 
     EncryptModule(CAServer caServer, String encryptType) {
+        this.symmetricKey = null;
         this.caConnector = new CAConnector();
         this.caConnector.connectServer(caServer);
         this.encryptType = encryptType;
@@ -61,12 +63,12 @@ public class EncryptModule {
     }
 
     // 문자열 암호화
-    public String encryptInfo(String info) {
+    public String encryptInfo(Visitor info) {
         return cryptoStrategy.encrypt(info);
     }
 
     // 문자열 복호화
-    public String decryptInfo(String cipher) {
+    public Visitor decryptInfo(String cipher) {
         return cryptoStrategy.decrypt(cipher);
     }
 

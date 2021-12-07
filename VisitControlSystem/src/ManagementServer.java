@@ -42,7 +42,7 @@ public class ManagementServer {
         for (Map.Entry<String, Visitlist> f : visitListRepository.entrySet()) {
             Visitlist visitlist = f.getValue();
             for (Checkin checkin : visitlist.getVisitorList()) {
-                if (checkin.getVisitor().getVname().equals(visitor.getVname())) {
+                if (checkin.getVisitorId() == visitor.getVid()) {
                     if (Long.parseLong(starttime) <= Long.parseLong(checkin.getVisitedTime()) && Long.parseLong(checkin.getVisitedTime()) <= Long.parseLong(endtime)) {
                         facilityList.add(visitlist.getFacilityInfo());
                     }
@@ -52,9 +52,9 @@ public class ManagementServer {
         return facilityList;
     }
 
-    public ArrayList<Visitor> searchVisitorList(Facility facility, String starttime, String endtime) {
+    public ArrayList<String> searchVisitorList(Facility facility, String starttime, String endtime) {
         // 해당 기간동안 해당 시설에 방문한 사람들 리스트로 출력
-        ArrayList<Visitor> visitorList = new ArrayList<>();
+        ArrayList<String> visitorList = new ArrayList<>();
         Visitlist visitlist = visitListRepository.get(facility.getFname());
         for (Checkin checkin : visitlist.getVisitorList()) {
             if (Long.parseLong(starttime) <= Long.parseLong(checkin.getVisitedTime()) && Long.parseLong(checkin.getVisitedTime()) <= Long.parseLong(endtime)) {

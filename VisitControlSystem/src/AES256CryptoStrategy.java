@@ -42,12 +42,14 @@ public class AES256CryptoStrategy implements SymmetricKeyCryptoStrategy {
     }
 
     @Override
-    public String encrypt(String plain) {
+    public String encrypt(Visitor plain) {
         String cipher = "";
+        String plainString = toString(plain);
+
         try {
             Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
             c.init(Cipher.ENCRYPT_MODE, keySpec, new IvParameterSpec(iv.getBytes()));
-            byte[] encrypted = c.doFinal(plain.getBytes());
+            byte[] encrypted = c.doFinal(plainString.getBytes());
             cipher = Base64.getEncoder().encodeToString(encrypted);
         } catch (NoSuchAlgorithmException
                 | InvalidKeyException
@@ -61,7 +63,7 @@ public class AES256CryptoStrategy implements SymmetricKeyCryptoStrategy {
     }
 
     @Override
-    public String decrypt(String cipher) {
+    public Visitor decrypt(String cipher) {
         String plain = "";
         try {
             Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
@@ -77,6 +79,28 @@ public class AES256CryptoStrategy implements SymmetricKeyCryptoStrategy {
                 | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return plain;
+        return parseVisitor(plain);
+    }
+
+    public String toString(Visitor visitor){
+        // <vid>|<vname>|<vage>|<vaddress>|<vcontact>|<vaccination>
+        return visitor.getVid()
+                +"/"+visitor.getVname()
+                +"/"+visitor.getVage()
+                +"/"+visitor.getVaddress()
+                +"/"+visitor.getVcontact()
+                +"/"+visitor.getVaccination();
+    }
+
+    public Visitor parseVisitor(String str){
+        String[] splitStr = str.split("/");
+        return new Visitor(
+                Integer.parseInt(splitStr[0]),
+                splitStr[1],
+                Integer.parseInt(splitStr[2]),
+                splitStr[3],
+                splitStr[4],
+                Vaccination.valueOf(splitStr[5])
+        );
     }
 }
