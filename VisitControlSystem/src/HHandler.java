@@ -4,9 +4,12 @@ import java.util.ArrayList;
 public class HHandler {
 
     private SearchProcessModule searchProcessModule;
+    private EncryptModule encryptModule;
 
-    HHandler(SearchProcessModule searchProcessModule) {
+    HHandler(SearchProcessModule searchProcessModule, EncryptModule encryptModule) {
         this.searchProcessModule = searchProcessModule;
+        this.encryptModule = encryptModule;
+        initEncryptModule();
     }
 
     public void sendMessage(String message) {
@@ -19,6 +22,20 @@ public class HHandler {
     }
 
     public ArrayList<Visitor> searchVisitorList(Facility facility, String startTime, String endTime) {
-        return searchProcessModule.searchVisitorList(facility, startTime, endTime);
+        ArrayList<Visitor> result = new ArrayList<>();
+        for (String cipher : searchProcessModule.searchVisitorList(facility, startTime, endTime)){
+            result.add(encryptModule.decryptInfo(cipher));
+        }
+        return result;
+    }
+
+    private void initEncryptModule(){
+        String symKey = "";
+        if(encryptModule.getKey() == null)
+            symKey = encryptModule.generateKey("cHandleKey");
+        else
+            symKey = encryptModule.getKey();
+        encryptModule.initKey(symKey);
+
     }
 }
