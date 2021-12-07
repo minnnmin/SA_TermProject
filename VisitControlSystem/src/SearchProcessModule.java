@@ -1,12 +1,19 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class SearchProcessModule {
 
-    public void searchFacilityList(String visitor, LocalDateTime starttime, LocalDateTime endtime) {
-        // TODO implement here
+    private ServerConnector serverConnector;
+
+    SearchProcessModule(ServerConnector serverConnector) {
+        this.serverConnector = serverConnector;
     }
 
-    public void searchVisitorList(Facility facility, LocalDateTime starttime, LocalDateTime endtime) {
-        // TODO implement here
+    public ArrayList<Facility> searchFacilityList(Visitor visitor, String starttime, String endtime) {
+        return serverConnector.searchFacilityList(visitor, starttime, endtime);
+    }
+
+    public ArrayList<Visitor> searchVisitorList(Facility facility, String starttime, String endtime) {
+        return serverConnector.searchVisitorList(facility, starttime, endtime);
     }
 }
