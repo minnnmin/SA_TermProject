@@ -55,12 +55,19 @@ public class VisitControlSystem {
         }
 
 //        searchVisitorList 테스트
-        ArrayList<Visitor> visitorList = hHandler.searchVisitorList(f1, "20211001", "20211002");
+        ArrayList<String> visitorList = hHandler.searchVisitorList(f1, "20211001", "20211002");
         if (visitorList.isEmpty()) {
             System.out.println("해당하는 방문객 없음");
         } else {
-            for (Visitor visitor : visitorList) {
-                System.out.println(visitor.getVname());
+            for (String visitorEnc : visitorList) {
+                System.out.println(visitorEnc);
+
+                // 복호화 테스트
+                EncryptModule decryptModule = new EncryptModule(caServer);
+                String symKey = decryptModule.generateKey("cHandleKey");
+                decryptModule.initKey(symKey);
+                Visitor visitorDec = decryptModule.decryptInfo(visitorEnc);
+                System.out.println(visitorDec.getVname());
             }
         }
     }

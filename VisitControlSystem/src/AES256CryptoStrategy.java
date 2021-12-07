@@ -42,7 +42,6 @@ public class AES256CryptoStrategy implements SymmetricKeyCryptoStrategy {
     }
 
     @Override
-<<<<<<< HEAD
     public String encrypt(Visitor plain) {
         String cipher = "";
         String plainString = toString(plain);

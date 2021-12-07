@@ -21,12 +21,8 @@ public class HHandler {
         return searchProcessModule.searchFacilityList(visitor, startTime, endTime);
     }
 
-    public ArrayList<Visitor> searchVisitorList(Facility facility, String startTime, String endTime) {
-        ArrayList<Visitor> result = new ArrayList<>();
-        for (String cipher : searchProcessModule.searchVisitorList(facility, startTime, endTime)){
-            result.add(encryptModule.decryptInfo(cipher));
-        }
-        return result;
+    public ArrayList<String> searchVisitorList(Facility facility, String startTime, String endTime) {
+        return searchProcessModule.searchVisitorList(facility, startTime, endTime);
     }
 
     private void initEncryptModule(){
