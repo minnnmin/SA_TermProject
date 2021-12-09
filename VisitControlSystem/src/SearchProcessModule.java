@@ -13,7 +13,7 @@ public class SearchProcessModule {
         return serverConnector.searchFacilityList(visitor, starttime, endtime);
     }
 
-    public ArrayList<Visitor> searchVisitorList(Facility facility, String starttime, String endtime) {
+    public ArrayList<String> searchVisitorList(Facility facility, String starttime, String endtime) {
         return serverConnector.searchVisitorList(facility, starttime, endtime);
     }
 }

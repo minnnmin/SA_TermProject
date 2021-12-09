@@ -12,8 +12,13 @@ public class VisitlistControlModule {
         serverConnector.createVisitlist(facility);
     }
 
-    public void addVisitorInfo(Facility facility, Visitor visitor, String visitedTime) {
-        Checkin checkin = new Checkin(visitedTime, visitor);
+//    public void addVisitorInfo(Facility facility, Visitor visitor, String visitedTime) {
+//        Checkin checkin = new Checkin(visitedTime, visitor);
+//        serverConnector.addVisitorInfo(facility, checkin);
+//    }
+
+    public void addVisitorInfo(Facility facility, int visitorId, String visitorEnc, String visitedTime) {
+        Checkin checkin = new Checkin(visitedTime, visitorId, visitorEnc);
         serverConnector.addVisitorInfo(facility, checkin);
     }
 
