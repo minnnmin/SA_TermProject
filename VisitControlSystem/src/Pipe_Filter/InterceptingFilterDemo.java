@@ -6,22 +6,22 @@ public class InterceptingFilterDemo {
 	
 	// sendMessage
    public static void main (String [] args) {
-	  // FilterManager : °¢ ÇÊÅÍ¸¦ ¿¬°áÇÏ´Â FilterChainÀ» °ü¸®
-	  // FilterChain : ¿©·¯ ÇÊÅÍµéÀ» °¡Áö°í ÀÖ°í, ÀÌ¿¡ ´ëÇÑ method¸¦ »ç¿ëÇÏ´Â class
-	  // Target : Àü´Ş¹ŞÀº ¸Ş½ÃÁö ÃÖÈÄ µµ´Ş class
+	  // FilterManager : ê° í•„í„°ë¥¼ ì—°ê²°í•˜ëŠ” FilterChainì„ ê´€ë¦¬
+	  // FilterChain : ì—¬ëŸ¬ í•„í„°ë“¤ì„ ê°€ì§€ê³  ìˆê³ , ì´ì— ëŒ€í•œ methodë¥¼ ì‚¬ìš©í•˜ëŠ” class
+	  // Target : ì „ë‹¬ë°›ì€ ë©”ì‹œì§€ ìµœí›„ ë„ë‹¬ class
 	  // setFilter = addfilter sequential
 //      FilterManager filterManager = new FilterManager (new Target());
 //      filterManager.setFilter (new AuthenticationFilter ());
 //      filterManager.setFilter (new DebugFilter ());
       
-      // º¯Çü ¹æ¹ı
+      // ë³€í˜• ë°©ë²•
       // FilterManager filterManager = new FilterManager (new Target());
-      // Target -> º¯È¯µÈ ¸Ş½ÃÁö¸¦ ¹Ş°í, ÀÌ¸¦ ½ÃÇèÀûÀ¸·Î »ç¿ëÇÏ±â À§ÇØ¼­ Ãâ·ÂÇÏ´Â ÇÔ¼ö¸¦ Áö´Ñ Class
+      // Target -> ë³€í™˜ëœ ë©”ì‹œì§€ë¥¼ ë°›ê³ , ì´ë¥¼ ì‹œí—˜ì ìœ¼ë¡œ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ë¥¼ ì§€ë‹Œ Class
       
       // filterManager.setFilter (new AuthenticationFilter ());
       // filterManager.setFilter (new DebugFilter ());
 	   
-      // 1. Filter ÀÌ¸§ º¯°æ 2. Message(ArrayList of Facility, ArrayList of Visitor(Encrpyted to String))
+      // 1. Filter ì´ë¦„ ë³€ê²½ 2. Message(ArrayList of Facility, ArrayList of Visitor(Encrpyted to String))
       // 
       // FilterManager1 : Facility ArrayList -> reordered by priority Facility ArrayList
       // -> Message Packing(each of Facility -> (Facility + Message)) -> ArrayList of Packed Message
@@ -32,7 +32,7 @@ public class InterceptingFilterDemo {
       
       // Target Use Packed Message ArrayList just print
 
-      // Client : ÇØ´ç FilterµéÀ» »ç¿ëÇÒ Class : Notification Module ³»¿¡¼­ °¡Áú Filter ÀÌ¿ë Class
+      // Client : í•´ë‹¹ Filterë“¤ì„ ì‚¬ìš©í•  Class : Notification Module ë‚´ì—ì„œ ê°€ì§ˆ Filter ì´ìš© Class
 //      Client client = new Client ();
 //      client.setFilterManager (filterManager);
 //      client.sendRequest ("HOME");

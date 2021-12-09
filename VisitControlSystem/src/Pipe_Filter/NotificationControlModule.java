@@ -8,7 +8,7 @@ public class NotificationControlModule {
 	private FilterRunner VisitorR;
 	
 	public NotificationControlModule() {
-		// Filter°¡ ÀÖ´Ù¸é
+		// Filterê°€ ìˆë‹¤ë©´
 		this.FacilityManager = new FilterManager(new Target());
 		FacilityManager.setFilter(new PriorityFilter());
 		FacilityManager.setFilter(new MessagePackFilter());
@@ -24,15 +24,15 @@ public class NotificationControlModule {
 		VisitorR.setFilterManager(VisitorManager);
 
     }
-	// Priority Filter´Â Facility ArrayList¸¦ ¹Ş°í ÀÌ¿¡ ´ëÇÑ priority °è»ê ÈÄ Á¤·Ä ÈÄ return
+	// Priority FilterëŠ” Facility ArrayListë¥¼ ë°›ê³  ì´ì— ëŒ€í•œ priority ê³„ì‚° í›„ ì •ë ¬ í›„ return
 	// 
 
     public void sendMessage(HMessage message) {
         // TODO implement here
 		
-		this.FacilityR.sendRequest (message.getFacilities()); // ÀÎÀÚ·Î messageÀÇ Facility ArrayList¸¦ ³Ñ±æ °Í 	
+		this.FacilityR.sendRequest (message.getFacilities()); // ì¸ìë¡œ messageì˜ Facility ArrayListë¥¼ ë„˜ê¸¸ ê²ƒ 	
 		
-		this.VisitorR.sendRequest(message.getVisitors()); // ÀÎÀÚ·Î messageÀÇ Visitor(String) ArrayList¸¦ ³Ñ±æ °Í
+		this.VisitorR.sendRequest(message.getVisitors()); // ì¸ìë¡œ messageì˜ Visitor(String) ArrayListë¥¼ ë„˜ê¸¸ ê²ƒ
     	  	
     }
 }
