@@ -14,16 +14,21 @@ public class NotificationControlModule {
 //		   
 
     }
+	// Priority Filter는 Facility ArrayList를 받고 이에 대한 priority 계산 후 정렬 후 return
+	// 
 
     public void sendMessage(Message message) {
         // TODO implement here
+    	// 
+    	
 //		FilterRunner Facility = new FilterRunner();
 //		Facility.setFilterManager (FacilityManager);
-//		Facility.sendRequest ("Facility ArrayList"); // 인자로 message의 Facility ArrayList를 넘길것
+//		Facility.sendRequest ("Facility ArrayList"); // 인자로 message의 Facility ArrayList를 넘길 것
     	
 //		FilterRunner Visitor = new FilterRunner();
 //		Visitor.setFilterManager(VisitorManager);
-//		Visitor.sendRequest("Visitor ArrayList");
+//		Visitor.sendRequest("Visitor ArrayList"); // 인자로 message의 Visitor(String) ArrayList를 넘길 것
+    	
     	
     	
     }
