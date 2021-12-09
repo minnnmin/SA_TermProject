@@ -1,35 +1,36 @@
 public class NotificationControlModule {
-	
-	public NotificationControlModule() {
-		// Filter°¡ ÀÖ´Ù¸é
-//		FilterManager FacilityManager = new FilterManager(new Target());
-//		FacilityManager.setFilter(new PriorityFilter());
-//		FacilityManager.setFilter(new MessagePackFilter());
-//		  
-//		   
-//		FilterManager VisitorManager = new FilterManager(new Target());
-//		VisitorManager.setFilter(new DecryptFilter());
-//		VisitorManager.setFilter(new PriorityFilter());
-//		VisitorManager.setFilter(new MessagePackFilter());
-//		   
+
+    private FilterManager FacilityManager;
+    private FilterManager VisitorManager;
+    private FilterRunner FacilityR;
+    private FilterRunner VisitorR;
+
+    public NotificationControlModule() {
+        // Filterê°€ ìˆë‹¤ë©´
+        this.FacilityManager = new FilterManager(new Target());
+        FacilityManager.setFilter(new PriorityFilter());
+        FacilityManager.setFilter(new MessagePackFilter());
+        this.FacilityR = new FilterRunner();
+        FacilityR.setFilterManager (FacilityManager);
+
+
+        this.VisitorManager = new FilterManager(new Target());
+        VisitorManager.setFilter(new DecryptFilter());
+        VisitorManager.setFilter(new PriorityFilter());
+        VisitorManager.setFilter(new MessagePackFilter());
+        this.VisitorR = new FilterRunner();
+        VisitorR.setFilterManager(VisitorManager);
 
     }
-	// Priority Filter´Â Facility ArrayList¸¦ ¹Ş°í ÀÌ¿¡ ´ëÇÑ priority °è»ê ÈÄ Á¤·Ä ÈÄ return
-	// 
+    // Priority FilterëŠ” Facility ArrayListë¥¼ ë°›ê³  ì´ì— ëŒ€í•œ priority ê³„ì‚° í›„ ì •ë ¬ í›„ return
+    //
 
-    public void sendMessage(Message message) {
+    public void sendMessage(HMessage message) {
         // TODO implement here
-    	// 
-    	
-//		FilterRunner Facility = new FilterRunner();
-//		Facility.setFilterManager (FacilityManager);
-//		Facility.sendRequest ("Facility ArrayList"); // ÀÎÀÚ·Î messageÀÇ Facility ArrayList¸¦ ³Ñ±æ °Í
-    	
-//		FilterRunner Visitor = new FilterRunner();
-//		Visitor.setFilterManager(VisitorManager);
-//		Visitor.sendRequest("Visitor ArrayList"); // ÀÎÀÚ·Î messageÀÇ Visitor(String) ArrayList¸¦ ³Ñ±æ °Í
-    	
-    	
-    	
+
+        this.FacilityR.sendRequest (message.getFacilities()); // ì¸ìë¡œ messageì˜ Facility ArrayListë¥¼ ë„˜ê¸¸ ê²ƒ
+
+        this.VisitorR.sendRequest(message.getVisitors()); // ì¸ìë¡œ messageì˜ Visitor(String) ArrayListë¥¼ ë„˜ê¸¸ ê²ƒ
+
     }
 }

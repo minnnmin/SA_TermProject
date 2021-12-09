@@ -1,7 +1,4 @@
-package Pipe_Filter;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MessagePackFilter implements Filter {

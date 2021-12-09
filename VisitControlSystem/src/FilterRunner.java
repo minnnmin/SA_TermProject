@@ -1,4 +1,3 @@
-package Pipe_Filter;
 public class FilterRunner {
    FilterManager filterManager;
 

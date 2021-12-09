@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class VisitControlSystem {
     public static void main(String[] args) {
@@ -61,14 +62,21 @@ public class VisitControlSystem {
         } else {
             for (String visitorEnc : visitorList) {
                 System.out.println(visitorEnc);
-
-                // 복호화 테스트
-                EncryptModule decryptModule = new EncryptModule(caServer);
-                String symKey = decryptModule.generateKey("cHandleKey");
-                decryptModule.initKey(symKey);
-                Visitor visitorDec = decryptModule.decryptInfo(visitorEnc);
-                System.out.println(visitorDec.getVname());
             }
         }
+
+        // NotificationControlModule 테스트
+        NotificationControlModule nofi = new NotificationControlModule();
+        List<Facility> fs = new ArrayList();
+        fs.add(f1);
+        fs.add(f3);
+        fs.add(f2);
+
+        List<String> vs = new ArrayList();
+        for (String visitorEnc: visitorList){
+            vs.add(visitorEnc);
+        }
+        HMessage hm = new HMessage(fs, vs);
+        nofi.sendMessage(hm);
     }
 }

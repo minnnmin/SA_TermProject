@@ -1,5 +1,3 @@
-package Pipe_Filter;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +31,7 @@ class PriorityV implements Comparator<Object> {
     public int compare(Object o1, Object o2) {
     	Visitor v1 = (Visitor) o1;
     	Visitor v2 = (Visitor) o2;
-        return v1.getid().compareTo(v2.getid());
+        return v1.getVid().compareTo(v2.getVid());
     }
  
 }
@@ -44,7 +42,7 @@ class PriorityF implements Comparator<Object> {
     public int compare(Object o1, Object o2) {
     	Facility v1 = (Facility) o1;
     	Facility v2 = (Facility) o2;
-        return v1.getid().compareTo(v2.getid());
+        return v1.getFid().compareTo(v2.getFid());
     }
  
 }
