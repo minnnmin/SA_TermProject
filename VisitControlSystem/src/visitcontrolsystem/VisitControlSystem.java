@@ -83,7 +83,6 @@ public class VisitControlSystem {
         }
 
         // visitcontrolsystem.module.NotificationControlModule 테스트
-        NotificationControlModule nofi = new NotificationControlModule();
         List<Facility> fs = new ArrayList();
         fs.add(f1);
         fs.add(f3);
@@ -94,6 +93,6 @@ public class VisitControlSystem {
             vs.add(visitorEnc);
         }
         HMessage hm = new HMessage(fs, vs);
-        nofi.sendMessage(hm);
+        hHandler.sendMessage(hm);
     }
 }
