@@ -19,7 +19,7 @@ import java.util.List;
 
 public class VisitControlSystem {
     public static void main(String[] args) {
-        
+
         ManagementServer managementServer = new ManagementServer();
         ServerConnector serverConnector = new ServerConnector();
         serverConnector.connectServer(managementServer);
@@ -28,11 +28,12 @@ public class VisitControlSystem {
         EncryptModule encryptModule = new EncryptModule(caServer);
         VisitlistControlModule visitlistControlModule = new VisitlistControlModule(serverConnector);
         SearchProcessModule searchProcessModule = new SearchProcessModule(serverConnector);
+        NotificationControlModule notiModule = new NotificationControlModule();
 
         FHandler fHandler = new FHandler(visitlistControlModule);
         CHandler cHandler = new CHandler(visitlistControlModule,encryptModule);
-        HHandler hHandler = new HHandler(searchProcessModule,encryptModule);
-        
+        HHandler hHandler = new HHandler(searchProcessModule,encryptModule,notiModule);
+
         // 시설, 고객 데이터
         Facility f1 = new Facility("cafe1", "서울", "010-1234-1234");
         Facility f2 = new Facility("cafe2", "경기", "010-2345-2345");
@@ -90,13 +91,13 @@ public class VisitControlSystem {
         cHandler.addVisitorInfo(f4, v9, "20211220");
 
         // f5에 v2, 3, 4, 6, 8, 10 방문
-        fHandler.createVisitlist(f4);
-        cHandler.addVisitorInfo(f4, v2, "20211201");
-        cHandler.addVisitorInfo(f4, v3, "20211205");
-        cHandler.addVisitorInfo(f4, v4, "20211207");
-        cHandler.addVisitorInfo(f4, v6, "20211215");
-        cHandler.addVisitorInfo(f4, v8, "20211223");
-        cHandler.addVisitorInfo(f4, v10, "20211231");
+        fHandler.createVisitlist(f5);
+        cHandler.addVisitorInfo(f5, v2, "20211201");
+        cHandler.addVisitorInfo(f5, v3, "20211205");
+        cHandler.addVisitorInfo(f5, v4, "20211207");
+        cHandler.addVisitorInfo(f5, v6, "20211215");
+        cHandler.addVisitorInfo(f5, v8, "20211223");
+        cHandler.addVisitorInfo(f5, v10, "20211231");
 
 
         // 특정 기간 내 확진자(v3)가 다녀간 시설 리스트
@@ -122,7 +123,6 @@ public class VisitControlSystem {
         }
 
         // visitcontrolsystem.module.NotificationControlModule 테스트
-        NotificationControlModule nofi = new NotificationControlModule();
 
         List<String> vs = new ArrayList();
         for (String visitorEnc: visitorList){
@@ -131,6 +131,6 @@ public class VisitControlSystem {
 
         System.out.println("\n[우선순위 별 알림 전송]");
         HMessage hm = new HMessage(facilityList, vs);
-        nofi.sendMessage(hm);
+        hHandler.sendMessage(hm);
     }
 }
