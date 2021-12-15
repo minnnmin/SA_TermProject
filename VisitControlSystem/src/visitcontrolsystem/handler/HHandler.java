@@ -2,23 +2,27 @@ package visitcontrolsystem.handler;
 
 import visitcontrolsystem.model.Facility;
 import visitcontrolsystem.model.Visitor;
+import visitcontrolsystem.model.HMessage;
 import visitcontrolsystem.module.EncryptModule;
 import visitcontrolsystem.module.SearchProcessModule;
+import visitcontrolsystem.module.NotificationControlModule;
 import java.util.ArrayList;
 
 public class HHandler {
 
     private SearchProcessModule searchProcessModule;
     private EncryptModule encryptModule;
+    private NotificationControlModule notiModule;
 
-    public HHandler(SearchProcessModule searchProcessModule, EncryptModule encryptModule) {
+    public HHandler(SearchProcessModule searchProcessModule, EncryptModule encryptModule, NotificationControlModule notiModule) {
         this.searchProcessModule = searchProcessModule;
         this.encryptModule = encryptModule;
+        this.notiModule = notiModule;
         initEncryptModule();
     }
 
-    public void sendMessage(String message) {
-        // TODO implement here
+    public void sendMessage(HMessage message) {    	
+        this.notiModule.sendMessage(message);    	
     }
 
 

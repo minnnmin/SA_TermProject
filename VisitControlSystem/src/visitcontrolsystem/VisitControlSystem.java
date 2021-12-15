@@ -36,10 +36,11 @@ public class VisitControlSystem {
         EncryptModule encryptModule = new EncryptModule(caServer);
         VisitlistControlModule visitlistControlModule = new VisitlistControlModule(serverConnector);
         SearchProcessModule searchProcessModule = new SearchProcessModule(serverConnector);
+        NotificationControlModule notiModule = new NotificationControlModule();
 
         FHandler fHandler = new FHandler(visitlistControlModule);
         CHandler cHandler = new CHandler(visitlistControlModule,encryptModule);
-        HHandler hHandler = new HHandler(searchProcessModule,encryptModule);
+        HHandler hHandler = new HHandler(searchProcessModule,encryptModule,notiModule);
 
         fHandler.createVisitlist(f1);
         cHandler.addVisitorInfo(f1, v1, "20211001");
