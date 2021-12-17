@@ -13,6 +13,7 @@
 4. VisitControlSystem.java의 main 함수를 실행합니다.
 <img src="/images/3.png" width=600 />
 <br><br>
+
 ## 개발환경
 - IDE : IntelliJ IDEA Community Edition 
 - JDK : OpenJDK 14.0.1 
