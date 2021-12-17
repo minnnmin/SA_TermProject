@@ -1,6 +1,6 @@
 # SA_TermProject
 ### Software Architecture Final Term Project
-<br>
+
 ## Quick Start Guide
 1. "git clone https://github.com/JeonK1/SA_TermProject.git" 혹은 zip 파일 다운을 통해 프로젝트를 로컬 파일에 다운로드를 받습니다.
 
