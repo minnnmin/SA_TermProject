@@ -2,15 +2,15 @@
 ### Software Architecture Final Term Project
 <br>
 ## Quick Start Guide
-1. "git clone https://github.com/JeonK1/SA_TermProject.git" 혹은 zip 파일 다운을 통해 프로젝트를 로컬 파일에 다운로드를 받습니다.<br>
+1. "git clone https://github.com/JeonK1/SA_TermProject.git" 혹은 zip 파일 다운을 통해 프로젝트를 로컬 파일에 다운로드를 받습니다.
 
-2. InteliJ IDE 를 통해 해당 프로젝트를 불러오기 합니다.<br>
+2. InteliJ IDE 를 통해 해당 프로젝트를 불러오기 합니다.
 <img src="/images/1.png" width=600 />
 
-3. Setting > Plugins 를 통해 Lombok 플러그인을 설치합니다.<br>
+3. Setting > Plugins 를 통해 Lombok 플러그인을 설치합니다.
 <img src="/images/2.png" width=600 />
 
-4. VisitControlSystem.java의 main 함수를 실행합니다.<br>
+4. VisitControlSystem.java의 main 함수를 실행합니다.
 <img src="/images/3.png" width=600 />
 
 <br>
