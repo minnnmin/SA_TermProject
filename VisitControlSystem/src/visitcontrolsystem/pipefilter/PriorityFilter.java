@@ -9,8 +9,6 @@ import java.util.Comparator;
 
 public class PriorityFilter implements Filter {
    public Object execute (Object request) {
-//      System.out.println ( "Priority request:" + request);
-//      return request + "56789";
 	   List<Object> reqlist = (ArrayList<Object>)request;
 	   if (reqlist.get(0).getClass() == Visitor.class) {
 		   PriorityV pv = new PriorityV();		   
@@ -33,7 +31,7 @@ class PriorityV implements Comparator<Object> {
 	 
     @Override
     public int compare(Object o1, Object o2) {
-		// visitor 은 백신접종여부와 나이에 따라 우선순위 전송
+	// visitor 은 백신접종여부와 나이에 따라 우선순위 전송
     	Visitor v1 = (Visitor) o1;
     	Visitor v2 = (Visitor) o2;
 
@@ -74,6 +72,4 @@ class PriorityF implements Comparator<Object> {
     	Facility v2 = (Facility) o2;
         return v1.getFid().compareTo(v2.getFid());
     }
- 
 }
-
