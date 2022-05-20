@@ -8,8 +8,6 @@ import java.util.List;
 
 public class MessagePackFilter implements Filter {
    public Object execute(Object request) {
-//      System.out.println ( "MessagePacked :" + request);
-//      return request + "1112131415";
 	   List<Object> reqlist = (ArrayList<Object>)request;
 	   if (reqlist.get(0).getClass() == Visitor.class) {
 		   List<PackMessage> pms = new ArrayList<PackMessage>();
