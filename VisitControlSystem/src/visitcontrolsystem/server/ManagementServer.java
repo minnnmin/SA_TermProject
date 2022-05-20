@@ -40,7 +40,6 @@ public class ManagementServer {
         }
     }
 
-
     public ArrayList<Facility> searchFacilityList(Visitor visitor, String starttime, String endtime) {
         ArrayList<Facility> facilityList = new ArrayList<>();
         for (Map.Entry<String, Visitlist> f : visitListRepository.entrySet()) {
