@@ -16,11 +16,6 @@ public class VisitlistControlModule {
         serverConnector.createVisitlist(facility);
     }
 
-//    public void addVisitorInfo(visitcontrolsystem.model.Facility facility, visitcontrolsystem.model.Visitor visitor, String visitedTime) {
-//        visitcontrolsystem.model.Checkin checkin = new visitcontrolsystem.model.Checkin(visitedTime, visitor);
-//        serverConnector.addVisitorInfo(facility, checkin);
-//    }
-
     public void addVisitorInfo(Facility facility, int visitorId, String visitorEnc, String visitedTime) {
         Checkin checkin = new Checkin(visitedTime, visitorId, visitorEnc);
         serverConnector.addVisitorInfo(facility, checkin);
