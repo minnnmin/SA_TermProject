@@ -19,11 +19,6 @@ public class DecryptFilter implements Filter {
     }
 
     public Object execute(Object request) {
-
-        // visitcontrolsystem.model.Visitor String to visitcontrolsystem.model.Visitor
-//      System.out.println ( "Decrypted :" + request);
-//      return request + "01234";
-
         List<String> reqarray = (ArrayList) request;
         List<Visitor> visitarr = new ArrayList<Visitor>();
         for (String requestEnc : reqarray) {
