@@ -16,7 +16,5 @@ public class FHandler {
     }
 
     public void showMessage(String message) {
-
     }
-
 }
