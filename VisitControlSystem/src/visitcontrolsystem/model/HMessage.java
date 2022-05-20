@@ -15,12 +15,7 @@ public class HMessage {
 
     private String targetContact;
     private String content;
-    
-    // visitcontrolsystem.model.Message
-    // visitcontrolsystem.model.Facility ArrayList
-    // visitcontrolsystem.model.Visitor ArrayList(Encrypted)
-    //
-    
+
     private List <Facility> facilities;
     private List <String> visitors;
     public List <Facility> getFacilities() {
@@ -29,5 +24,4 @@ public class HMessage {
     public List <String> getVisitors() {
     	return this.visitors;
     }
-
 }
