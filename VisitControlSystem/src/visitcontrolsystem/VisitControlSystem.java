@@ -123,7 +123,6 @@ public class VisitControlSystem {
         }
 
         // visitcontrolsystem.module.NotificationControlModule 테스트
-
         List<String> vs = new ArrayList();
         for (String visitorEnc: visitorList){
             vs.add(visitorEnc);
