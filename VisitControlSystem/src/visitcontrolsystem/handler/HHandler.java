@@ -25,7 +25,6 @@ public class HHandler {
         this.notiModule.sendMessage(message);    	
     }
 
-
     public ArrayList<Facility> searchFacilityList(Visitor visitor, String startTime, String endTime) {
         return searchProcessModule.searchFacilityList(visitor, startTime, endTime);
     }
@@ -41,6 +40,5 @@ public class HHandler {
         else
             symKey = encryptModule.getKey();
         encryptModule.initKey(symKey);
-
     }
 }
