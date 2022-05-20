@@ -29,7 +29,6 @@ public class ServerConnector {
         managementServer.printVisitorsOf(facility);
     }
 
-
     public ArrayList<Facility> searchFacilityList(Visitor visitor, String starttime, String endtime) {
         return managementServer.searchFacilityList(visitor, starttime, endtime);
     }
