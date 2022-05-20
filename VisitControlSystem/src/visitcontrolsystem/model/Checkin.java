@@ -9,6 +9,5 @@ public class Checkin {
 
     private String visitedTime;
     private int visitorId;
-//    private visitcontrolsystem.model.Visitor visitor;
     private String visitor;
 }
