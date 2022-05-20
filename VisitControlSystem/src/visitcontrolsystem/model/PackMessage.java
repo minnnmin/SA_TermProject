@@ -11,7 +11,6 @@ public class PackMessage {
 	
 	public void printPackMessage() {
 		if (obj.getClass() == Visitor.class) {			
-//			System.out.println("visitcontrolsystem.model.Visitor : " + ((visitcontrolsystem.model.Visitor)obj).getVid() + "Content :" + this.content);
 			Visitor visitor = (Visitor)obj;
 			StringBuilder sb = new StringBuilder();
 			sb.append("[코로나 확진판별 검사 안내]\n");
@@ -20,7 +19,6 @@ public class PackMessage {
 			System.out.println(sb.toString());
 		}
 		else if (obj.getClass() == Facility.class) {
-//			System.out.println("visitcontrolsystem.model.Facility : " + ((visitcontrolsystem.model.Facility)obj).getFid() + "Content :" + this.content);
 			Facility visitor = (Facility)obj;
 			StringBuilder sb = new StringBuilder();
 			sb.append("[코로나 확진판별 검사 안내]\n");
