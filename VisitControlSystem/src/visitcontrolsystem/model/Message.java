@@ -16,11 +16,6 @@ public class Message {
     private String targetContact;
     private String content;
     
-    // visitcontrolsystem.model.Message
-    // visitcontrolsystem.model.Facility ArrayList
-    // visitcontrolsystem.model.Visitor ArrayList(Encrpted)
-    //
-    
     private List <Facility> facilities;
     private List <String> visitors;
     public List <Facility> getFaclities() {
@@ -29,5 +24,4 @@ public class Message {
     public List <String> getVisitors() {
     	return this.visitors;
     }
-
 }
