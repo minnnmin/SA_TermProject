@@ -35,7 +35,6 @@ public class CHandler {
         visitlistControlModule.printVisitorsOf(facility);
     }
 
-
     public void showMessage(String message) {
         // TODO implement here
     }
